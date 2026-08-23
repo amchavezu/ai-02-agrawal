@@ -85,7 +85,7 @@ Only four things. The rest of this repository is above the floor.
 4. **`presentation.tex` / `.pdf`** — the 5-minute deck, source and compiled.
 
 Deadline is **Tuesday 22:00**, work merged into `main` through a pull request,
-and the repository URL registered in the course spreadsheet.
+and the repository URL posted as a comment on that week's issue.
 
 ## About `hand/`
 
