@@ -1,0 +1,53 @@
+Variance extension: reproducible results
+========================================
+
+Identity checked: Var(H + theta Z) = Var(H) + 2 theta Cov(H,Z) + theta^2 Var(Z).
+Here H=(Delta^2/4) Gamma alpha^2 s and Z=Gamma/s.
+
+Scenario: independent_counterexample
+  probabilities = (0.5, 0.5)
+  skill s       = (0.7, 1.0)
+  Gamma         = (1.0, 1.0)
+  Cov(H,Z)      = -0.0822857143
+  Var(Z)        =  0.0459183673
+  dVar/dtheta|0 = -0.1645714286
+  dVar/dtheta|1 = -0.0727346939
+  theta*        = 1.792000
+  joint gap     = -0.0321428571
+  paper ratio L = 1.0000000000
+  paper ratio R = 1.0321428571
+  note           = condition (30) uses these ratios only under independence
+
+Scenario: correlated_initial_decline
+  probabilities = (0.2, 0.3, 0.5)
+  skill s       = (0.7, 0.85, 1.0)
+  Gamma         = (1.2, 0.8, 1.0)
+  Cov(H,Z)      = -0.0030289748
+  Var(Z)        =  0.0874013135
+  dVar/dtheta|0 = -0.0060579496
+  dVar/dtheta|1 =  0.1687446774
+  theta*        = 0.034656
+  joint gap     = -0.0011831933
+  paper ratio L = 1.0204081633
+  paper ratio R = 1.0190966387
+  note           = condition (30) uses these ratios only under independence
+
+Scenario: correlated_initial_increase
+  probabilities = (0.2, 0.3, 0.5)
+  skill s       = (0.7, 0.85, 1.0)
+  Gamma         = (1.0, 1.2, 0.8)
+  Cov(H,Z)      =  0.0347643697
+  Var(Z)        =  0.0956655603
+  dVar/dtheta|0 =  0.0695287395
+  dVar/dtheta|1 =  0.2608598602
+  theta*        = none (initial slope is non-negative)
+  joint gap     =  0.0135798319
+  paper ratio L = 1.0329861111
+  paper ratio R = 1.0190966387
+  note           = condition (30) uses these ratios only under independence
+
+Key verdict
+-----------
+The independent counterexample satisfies condition (30), but theta*=1.792000 > 1
+and dVar/dtheta at theta=1 is negative. Condition (30) alone therefore does not
+imply the paper's displayed claim dVar/dtheta|theta=1 > 0.

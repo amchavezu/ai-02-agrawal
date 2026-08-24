@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="600" viewBox="0 0 960 600">
+<rect width="100%" height="100%" fill="white"/>
+<text x="480" y="34" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold">Variance of continuation value under three joint distributions</text>
+<line x1="90" y1="520.00" x2="925" y2="520.00" stroke="#dddddd"/>
+<text x="78" y="525.00" text-anchor="end" font-family="Arial" font-size="13">-0.008</text>
+<line x1="90" y1="445.00" x2="925" y2="445.00" stroke="#dddddd"/>
+<text x="78" y="450.00" text-anchor="end" font-family="Arial" font-size="13">0.050</text>
+<line x1="90" y1="370.00" x2="925" y2="370.00" stroke="#dddddd"/>
+<text x="78" y="375.00" text-anchor="end" font-family="Arial" font-size="13">0.108</text>
+<line x1="90" y1="295.00" x2="925" y2="295.00" stroke="#dddddd"/>
+<text x="78" y="300.00" text-anchor="end" font-family="Arial" font-size="13">0.166</text>
+<line x1="90" y1="220.00" x2="925" y2="220.00" stroke="#dddddd"/>
+<text x="78" y="225.00" text-anchor="end" font-family="Arial" font-size="13">0.224</text>
+<line x1="90" y1="145.00" x2="925" y2="145.00" stroke="#dddddd"/>
+<text x="78" y="150.00" text-anchor="end" font-family="Arial" font-size="13">0.282</text>
+<line x1="90" y1="70.00" x2="925" y2="70.00" stroke="#dddddd"/>
+<text x="78" y="75.00" text-anchor="end" font-family="Arial" font-size="13">0.340</text>
+<line x1="90.00" y1="70" x2="90.00" y2="520" stroke="#eeeeee"/>
+<text x="90.00" y="545" text-anchor="middle" font-family="Arial" font-size="13">0</text>
+<line x1="229.17" y1="70" x2="229.17" y2="520" stroke="#eeeeee"/>
+<text x="229.17" y="545" text-anchor="middle" font-family="Arial" font-size="13">0.2</text>
+<line x1="368.33" y1="70" x2="368.33" y2="520" stroke="#eeeeee"/>
+<text x="368.33" y="545" text-anchor="middle" font-family="Arial" font-size="13">0.4</text>
+<line x1="507.50" y1="70" x2="507.50" y2="520" stroke="#eeeeee"/>
+<text x="507.50" y="545" text-anchor="middle" font-family="Arial" font-size="13">0.6</text>
+<line x1="646.67" y1="70" x2="646.67" y2="520" stroke="#eeeeee"/>
+<text x="646.67" y="545" text-anchor="middle" font-family="Arial" font-size="13">0.8</text>
+<line x1="785.83" y1="70" x2="785.83" y2="520" stroke="#eeeeee"/>
+<text x="785.83" y="545" text-anchor="middle" font-family="Arial" font-size="13">1</text>
+<line x1="925.00" y1="70" x2="925.00" y2="520" stroke="#eeeeee"/>
+<text x="925.00" y="545" text-anchor="middle" font-family="Arial" font-size="13">1.2</text>
+<line x1="90" y1="70" x2="90" y2="520" stroke="black" stroke-width="2"/>
+<line x1="90" y1="520" x2="925" y2="520" stroke="black" stroke-width="2"/>
+<text x="507.50" y="572" text-anchor="middle" font-family="Arial" font-size="18">Tool quality theta</text>
+<text x="24" y="295.00" text-anchor="middle" transform="rotate(-90 24 295.00)" font-family="Arial" font-size="18">Var(V(theta))</text>
+<polyline points="90.00,318.81 124.79,329.32 159.58,339.54 194.38,349.45 229.17,359.07 263.96,368.39 298.75,377.41 333.54,386.14 368.33,394.56 403.12,402.69 437.92,410.53 472.71,418.06 507.50,425.30 542.29,432.24 577.08,438.89 611.88,445.23 646.67,451.28 681.46,457.03 716.25,462.49 751.04,467.64 785.83,472.50 820.63,477.06 855.42,481.33 890.21,485.30 925.00,488.97" fill="none" stroke="#1769aa" stroke-width="4"/>
+<polyline points="90.00,344.65 124.79,344.76 159.58,344.31 194.38,343.28 229.17,341.70 263.96,339.54 298.75,336.82 333.54,333.53 368.33,329.68 403.12,325.26 437.92,320.28 472.71,314.72 507.50,308.61 542.29,301.92 577.08,294.67 611.88,286.86 646.67,278.48 681.46,269.53 716.25,260.02 751.04,249.94 785.83,239.29 820.63,228.08 855.42,216.30 890.21,203.96 925.00,191.05" fill="none" stroke="#2e7d32" stroke-width="4"/>
+<polyline points="90.00,387.54 124.79,382.73 159.58,377.29 194.38,371.24 229.17,364.57 263.96,357.28 298.75,349.37 333.54,340.84 368.33,331.69 403.12,321.92 437.92,311.53 472.71,300.52 507.50,288.90 542.29,276.65 577.08,263.78 611.88,250.29 646.67,236.19 681.46,221.46 716.25,206.12 751.04,190.15 785.83,173.57 820.63,156.36 855.42,138.54 890.21,120.10 925.00,101.03" fill="none" stroke="#c62828" stroke-width="4"/>
+<line x1="110" y1="80" x2="145" y2="80" stroke="#1769aa" stroke-width="4"/>
+<text x="155" y="85" font-family="Arial" font-size="14">independent counterexample</text>
+<line x1="110" y1="107" x2="145" y2="107" stroke="#2e7d32" stroke-width="4"/>
+<text x="155" y="112" font-family="Arial" font-size="14">correlated initial decline</text>
+<line x1="110" y1="134" x2="145" y2="134" stroke="#c62828" stroke-width="4"/>
+<text x="155" y="139" font-family="Arial" font-size="14">correlated initial increase</text>
+</svg>

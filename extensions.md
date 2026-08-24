@@ -30,11 +30,51 @@ $$
 The object is the cross-sectional variance of continuation value $V(\theta)$. The
 individual tool benefit and the coefficient of variation are different objects.
 
-## Candidate extensions (not yet adjudicated)
+## Completed extension: correlated opportunity judgment and skill
 
-- Correlation between implementation skill and opportunity judgment instead of independence.
-- Corner solutions when optimal effort reaches zero.
-- Alternative success and cost functions beyond the square-root specification.
-- Endogenous opportunity discovery effort rather than exogenous $\gamma(t)$.
+The paper assumes the opportunity multiplier $\Gamma$ is independent of implementation
+skill $s$. The repository now relaxes that assumption while retaining
+$\alpha\perp(\Gamma,s)$. Writing
 
-Before calling any item an extension, search the appendices and related literature.
+$$
+H=\frac{\Delta^2}{4}\Gamma\alpha^2s,
+\qquad Z=\frac{\Gamma}{s},
+\qquad V(\theta)=H+\theta Z,
+$$
+
+gives the general identity
+
+$$
+\operatorname{Var}(V(\theta))
+=\operatorname{Var}(H)+2\theta\operatorname{Cov}(H,Z)
++\theta^2\operatorname{Var}(Z).
+$$
+
+Initial equalisation therefore requires
+
+$$
+\mathbb E[\Gamma^2]
+<\mathbb E[\Gamma s]\mathbb E[\Gamma/s],
+$$
+
+not condition (30), which uses the extra independence restriction. The code contains two
+correlated examples with the same skill marginal distribution: one has an initially falling
+variance curve and the other an initially rising curve.
+
+See `analysis/variance_derivation.md` for every algebraic step and
+`output/variance_summary.txt` for the numerical results.
+
+## Internal slip found
+
+The appendix derives a negative intercept and positive slope for
+$d\operatorname{Var}(V)/d\theta$. That proves a unique positive turning point, but it does
+not prove that the derivative is positive specifically at $\theta=1$. The extra condition is
+$\theta^*<1$. The repository's independent counterexample satisfies condition (30) while
+$\theta^*=1.792$ and the derivative at one remains negative.
+
+## Remaining candidates
+
+- Treat the effort constraint explicitly when tool quality makes the interior solution hit
+  the corner $e^*=0$.
+- Allow payoff judgment $\alpha$ to correlate with $(\Gamma,s)$.
+- Endogenise opportunity discovery effort instead of taking $\gamma(t)$ as given.

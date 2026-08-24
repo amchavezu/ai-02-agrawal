@@ -58,9 +58,9 @@ $$
 of human implementation effort less attractive at the margin, so the agent produces
 more value with less direct effort.
 
-This is an initial verified map, not the final submission. The final version still needs
-the exact proposition selected for the oral exam, its complete conditions, the hand check,
-and the variance analysis in Proposition 3.
+This repository states Proposition 1 as the main result and develops Proposition 3 as the
+above-the-floor extension. The mathematical and numerical checks are complete; the one
+remaining academic-integrity requirement is the student's own handwritten verification.
 
 ## Repository map
 
@@ -69,6 +69,9 @@ and the variance analysis in Proposition 3.
 | `README.md` | One-page paper and model summary (this file) |
 | `prompts.md` | Raw prompts and answers used for the assignment |
 | `extensions.md` | Questions, checks, and possible extensions |
+| `analysis/variance_derivation.md` | Full Proposition 3 derivation, extension, and counterexample |
+| `code/variance_extension.py` | Reproducible standard-library Python analysis |
+| `output/` | Console summary, numerical CSV, and variance figure |
 | `hand/` | The student's own photographed derivation |
 | `presentation.tex` / `presentation.pdf` | Five-minute Beamer deck |
 | `paper/` | Citation and local-paper instructions |
@@ -76,12 +79,39 @@ and the variance analysis in Proposition 3.
 | `AGENTS.md` | Durable instructions for Codex in this repository |
 | `scripts/check_environment.ps1` | Repeatable readiness check |
 
+## Reproducible extension and output
+
+The above-the-floor extension relaxes independence between the opportunity multiplier
+\(\Gamma\) and implementation skill \(s\). It shows that the paper's marginal condition is
+replaced by the joint-moment inequality
+
+$$
+\mathbb E[\Gamma^2]<\mathbb E[\Gamma s]\mathbb E[\Gamma/s].
+$$
+
+The derivation also documents an internal slip: condition (30) guarantees an initially
+negative variance slope and \(\theta^*>0\), but a positive slope specifically at
+\(\theta=1\) additionally requires \(\theta^*<1\). The included independent counterexample
+satisfies condition (30) yet has \(\theta^*=1.792\), so the derivative remains negative at
+\(\theta=1\).
+
+Run the analysis from the repository root:
+
+```powershell
+python code\variance_extension.py
+```
+
+The command prints the results and regenerates `output/variance_summary.txt`,
+`output/variance_results.csv`, and `output/variance_curve.svg`. The complete algebra is in
+`analysis/variance_derivation.md`; `hand/DERIVATION_GUIDE.md` gives a two-page sequence for
+the student's own handwritten verification.
+
 ## Submission checklist
 
 - [ ] Replace every `TODO` after checking the paper directly.
 - [ ] Add at least one genuine handwritten derivation to `hand/`.
 - [ ] Record the relevant AI conversation in `prompts.md` without polishing it.
-- [ ] Compile `presentation.tex` and visually inspect `presentation.pdf`.
+- [x] Compile `presentation.tex` and visually inspect `presentation.pdf`.
 - [ ] Commit small changes on `analysis`, push the branch, open a PR, and merge it.
 - [ ] Confirm `main` contains the final files.
 - [ ] Comment only the repository URL on the course issue before Tuesday 22:00.
