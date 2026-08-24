@@ -1,53 +1,40 @@
-# Extensions — what could be relaxed, and what is already taken
+# Research checks and possible extensions
 
-The paper names its own assumptions in a block just before §1.2, and lists
-exactly three: **substitutability/additivity**, **linear cost**, and **myopic
-users**. That block is the natural starting point, but it needs checking against
-the appendices before anything is claimed to be open.
+This file is deliberately a work log, not a list of established results. Every claim must
+be checked against the paper, especially its appendices.
 
-## Dead end: linear → convex cost
+## Immediate checks for this week
 
-This is the first thing anyone suggests, including every LLM I asked. It is
-**already done**. Appendix D is titled *"Extension to convex cost functions
-(Remark 2.3)"* and redoes Sections 2, 3 and 4 under strictly convex $c(e)$, with
-Propositions D.3 and D.6.
+1. Reproduce the first-order condition
+   $p'(se^*;\theta)s\alpha\Delta=c'(e^*;\theta)$ and state exactly when it is
+   valid (interior versus corner solution).
+2. Re-derive the envelope-theorem step in Proposition 2. Explain why the indirect
+   effect through $e^*(\theta)$ drops out at the optimum.
+3. Verify the geometric sum that yields $V_0=\gamma_0M(e^*;\theta)/(1-\delta\gamma)$.
+4. Reproduce the derivative of $\operatorname{Var}(V(\theta))$ and check the
+   inequality that makes its intercept negative.
+5. Distinguish absolute inequality $\operatorname{Var}(V)$ from relative inequality
+   measured by the coefficient of variation.
 
-Proposing it as an extension is replication, and it is the clearest example in
-this course of why the appendices have to be read before an idea is called new.
+## The variance trap
 
-**But there is a gap inside the gap.** Appendix D covers §§2–4. It does **not**
-cover §5. Convex cost applied to the skill-polarisation result is technically
-untouched — a narrow opening, but a real one.
+Do not write "variance is U-shaped in AI" without qualifications. The paper's Proposition 3
+uses a specific functional form, independence assumptions, positive-support restrictions,
+and the heterogeneity condition
 
-## Live: myopia
+$$
+\frac{\mathbb{E}[\Gamma^2]}{\mathbb{E}[\Gamma]^2}
+< \mu_s\mathbb{E}[1/s].
+$$
 
-The agent maximises **short-term** utility at each state: he chooses effort to
-maximise current output net of cost, ignoring that effort today changes skill
-tomorrow. The paper is explicit that this is a maintained assumption, and it is
-never relaxed anywhere — no discount factor, no forward-looking agent, nothing.
+The object is the cross-sectional variance of continuation value $V(\theta)$. The
+individual tool benefit and the coefficient of variation are different objects.
 
-A **two-period agent** who internalises the skill transition is the most tractable
-version: solve period 2 as the static problem already characterised, then period 1
-with the continuation value attached. The question worth asking is whether the
-deskilling result survives when the agent can see it coming.
+## Candidate extensions (not yet adjudicated)
 
-## Harder: complementarity inside $p(\cdot)$
+- Correlation between implementation skill and opportunity judgment instead of independence.
+- Corner solutions when optimal effort reaches zero.
+- Alternative success and cost functions beyond the square-root specification.
+- Endogenous opportunity discovery effort rather than exogenous $\gamma(t)$.
 
-The obvious move — add an interaction term between $s$ and $a$ — is partly
-pre-empted: §4.4 micro-founds AI unreliability as a negative interaction and §5.3
-micro-founds AI literacy as a positive one. So an extension has to change the
-**production primitive itself**, not bolt a term onto it. Harder to make
-tractable, and easier to end up with a model whose results are assumed rather
-than derived.
-
-## How to tell a real extension from a fake one
-
-Three questions, in order:
-
-1. **Is it in the appendices?** Check before anything else. This is where most
-   proposed extensions die.
-2. **Does one equation change, or all of them?** If relaxing the assumption
-   rewrites the whole model, it is a new paper, not an extension.
-3. **Can you say what you expect to happen?** If you cannot state the expected
-   direction of the result beforehand, you do not yet understand the mechanism
-   well enough to relax it.
+Before calling any item an extension, search the appendices and related literature.

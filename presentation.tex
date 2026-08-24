@@ -4,111 +4,101 @@
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage{xcolor}
 \usetheme{default}
 \usecolortheme{seahorse}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{footline}[frame number]
 \setbeamerfont{frametitle}{size=\large}
 
-\title{Aouad, Lykouris \& Zhong (2026)}
-\subtitle{\emph{Human-AI Productivity Paradoxes} --- Section 2}
-\author{Alexander Quispe}
-\date{Repository 1 \textperiodcentered{} Week of August 17--22}
+\title{Agrawal, Gans \& Goldfarb (2025)}
+\subtitle{\emph{The Economics of Bicycles for the Mind}}
+\author{amchavezu}
+\date{Repository 2 - Week of August 24--29, 2026}
 
 \begin{document}
 
-%================= PORTADA (con el enlace al repositorio) =============
 \begin{frame}[plain]
   \titlepage
   \begin{center}\small
-    \texttt{github.com/alexanderquispe/ai-01-aouad}
+    \texttt{github.com/amchavezu/ai-02-agrawal}
   \end{center}
 \end{frame}
 
-%================= 1. EL ART\'ICULO ====================================
 \begin{frame}{1 \textperiodcentered{} The paper and the agent's problem}
-  \textbf{Question.} When does AI assistance make a worker \emph{less} productive?
+  \textbf{Question.} How do cognitive tools change effort, productivity, and the
+  value of implementation skill and judgment?
 
   \medskip
-  \textbf{The single mechanism.} AI is a \emph{perfectly substitutable input}:
-  skill, effort and assistance enter production only through their sum.
-  \[ x \;=\; s + e + a \]
+  \textbf{Single mechanism.} A tool substitutes for implementation effort but can
+  complement opportunity and payoff judgment.
 
   \medskip
-  \textbf{The agent's problem.} Choose effort $e$ to maximise output net of a
-  \emph{linear} cost:
-  \[ \max_{e \ge 0}\; p(s+e+a) \;-\; \gamma e \]
+  Conditional on finding an opportunity, the agent chooses $e_t\geq0$:
+  \[
+    \max_{e_t\geq0}\;M(e_t;\theta)
+    =p(se_t;\theta)\alpha\Delta-c(e_t;\theta).
+  \]
 
-  \smallskip
   \begin{itemize}\small
-    \item $p$ weakly increasing, concave, twice differentiable; $\gamma>0$.
-    \item Only constraint: $e \ge 0$ --- and it binds. That is the whole result.
+    \item $s$: implementation skill; $\alpha$: payoff judgment.
+    \item $\gamma(t)$: opportunity judgment; $\theta$: tool quality.
+    \item Interior FOC: $p'(se_t^*;\theta)s\alpha\Delta=c'(e_t^*;\theta)$.
   \end{itemize}
 \end{frame}
 
-%================= 2. EL RESULTADO ===================================
-\begin{frame}{2 \textperiodcentered{} Proposition 2.1, with all its conditions}
-  Define $x^{*}$ as the \emph{largest} maximiser of $p(x)-\gamma x$:
-  \[ x^{*} \;=\; \max\,\arg\max_{x}\;\bigl[\,p(x)-\gamma x\,\bigr] \]
-
-  \textbf{Regularity condition} (without it $x^{*}$ need not exist):
-  \[ \limsup_{x\to\infty} \frac{p(x)}{x} \;<\; \gamma \]
-
-  \medskip
-  \textbf{Then}
-  \[ e^{*}(s,a) = \bigl(x^{*}-s-a\bigr)_{+}, \qquad
-     p^{*}(s,a) = \max\bigl\{\,p(x^{*}),\; p(s+a)\,\bigr\} \]
+\begin{frame}{2 \textperiodcentered{} Proposition 1, with its conditions}
+  \textbf{Cognitive-tool conditions.} For $\theta'>\theta$ and every $e$,
+  \[
+    p(se;\theta')\geq p(se;\theta),\qquad
+    c(e;\theta')\leq c(e;\theta),
+  \]
+  while $p'(se;\theta)/c'(e;\theta)$ strictly decreases in $\theta$ for $e>0$.
 
   \medskip
-  \footnotesize\emph{Intuition.} The agent has one target level of total input;
-  he tops it up with effort, and once skill plus AI already reach it he simply
-  stops working.
+  With increasing/concave $p$, increasing/convex $c$, and an interior optimum:
+  \[
+    e_t^*(1)<e_t^*(0),\qquad e_t^*(\theta)=e^*(\theta),
+    \qquad V_0(\theta)>V_0(0).
+  \]
+
+  \footnotesize\emph{Intuition.} Tool adoption raises achievable net benefit but
+  lowers the marginal return to direct human implementation effort.
 \end{frame}
 
-%================= 3. LO QUE HICE ====================================
 \begin{frame}{3 \textperiodcentered{} What I did}
-  \textbf{Reproduced} Proposition 2.1 by hand --- the interior-versus-corner
-  split, with no differentiation in the proof (\texttt{hand/}).
-
-  \medskip
-  \textbf{Assumptions I considered relaxing}
-  \begin{itemize}\small
-    \item \textbf{Linear cost $\to$ convex.} \emph{Dead end}: the authors already
-      do it in Appendix D (Props. D.3, D.6). Replication, not extension.
-    \item \textbf{Myopia.} A two-period agent who internalises skill dynamics.
-      Never relaxed anywhere in the paper --- this is the live one.
-    \item \textbf{Complementarity inside $p(\cdot)$} rather than as an added
-      interaction term. Harder: \S{}4.4 and \S{}5.3 partly pre-empt it.
+  \begin{itemize}
+    \item Mapped the paper's three human inputs: implementation skill, payoff
+      judgment, and opportunity judgment.
+    \item Reconstructed the per-opportunity optimisation problem and its FOC.
+    \item Separated Proposition 1 (effort and output), Proposition 2
+      (adoption drivers), and Proposition 3 (conditional U-shaped variance).
+    \item Identified the variance claim as the priority audit: the U-shape is
+      conditional and concerns the variance of continuation value $V(\theta)$.
   \end{itemize}
 
   \medskip
-  \textbf{Also produced} a full step-by-step tutorial of the paper and two
-  lecture decks (\texttt{extra/}).
+  \textcolor{red}{TODO before submission:} add the student's own calculation,
+  numerical check, and final verdict.
 \end{frame}
 
-%================= 4. LA IA =========================================
 \begin{frame}{4 \textperiodcentered{} Where I did not believe the AI}
-  \textbf{What I asked.} ``What is the most natural extension of this model?''
+  \textbf{Claim to audit.} ``Wage variance is U-shaped in AI quality.''
 
   \medskip
-  \textbf{What the model answered.} Relax the linear cost $c(e)=\gamma e$ to a
-  strictly convex $c(e)$ --- presented confidently as an open direction.
+  \textbf{Why the loose claim is insufficient.}
+  Proposition 3 requires the paper's functional form, independence assumptions,
+  positive support, and inequality
+  \[
+    \frac{\mathbb{E}[\Gamma^2]}{\mathbb{E}[\Gamma]^2}
+    < \mu_s\,\mathbb{E}\!\left[\frac{1}{s}\right].
+  \]
+  It concerns $\operatorname{Var}(V(\theta))$, not every possible variance object.
 
   \medskip
-  \textbf{My verdict: \textcolor{red}{incorrect as an extension}.}
-  \begin{itemize}\small
-    \item Appendix D is titled \emph{``Extension to convex cost functions''} and
-      redoes Sections 2--4 under strictly convex cost.
-    \item So the proposal is already in the paper. I checked the appendix
-      directly rather than taking the answer at face value.
-    \item \emph{Caveat worth keeping:} Appendix D covers \S\S{}2--4 but \textbf{not}
-      \S{}5, so convex cost applied to the skill-polarisation result is genuinely
-      untouched.
-  \end{itemize}
-
-  \medskip
-  \footnotesize The step I re-derived by hand is in \texttt{hand/} --- I did not
-  trust the algebra of the first-order condition until I had written it out.
+  \textbf{Verdict:}
+  \textcolor{red}{TODO - write the student's verdict only after reproducing one
+  step by hand and attaching its photo from \texttt{hand/}.}
 \end{frame}
 
 \end{document}

@@ -1,0 +1,32 @@
+{
+  "terminal.integrated.env.windows": {
+    "PATH": "C:\\Program Files\\nodejs;C:\\Users\\marce\\Documents\\GitHub\\.codex-cli;C:\\Users\\marce\\Documents\\GitHub\\.tools\\tectonic;${env:PATH}"
+  },
+  "latex-workshop.latex.tools": [
+    {
+      "name": "tectonic",
+      "command": "C:\\Users\\marce\\Documents\\GitHub\\.tools\\tectonic\\tectonic.exe",
+      "args": [
+        "--synctex",
+        "--keep-logs",
+        "%DOC%"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipes": [
+    {
+      "name": "Compilar con Tectonic",
+      "tools": [
+        "tectonic"
+      ]
+    }
+  ],
+  "latex-workshop.latex.recipe.default": "first",
+  "files.exclude": {
+    "**/*.aux": true,
+    "**/*.log": true,
+    "**/*.nav": true,
+    "**/*.snm": true,
+    "**/*.toc": true
+  }
+}

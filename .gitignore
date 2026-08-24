@@ -9,12 +9,20 @@
 *.fls
 *.fdb_latexmk
 
-# macOS
+# Local tools and caches
+.tools/
+.cache/
+
+# Operating systems
 .DS_Store
+Thumbs.db
 
 # Never commit personal documents to a public teaching repository
 DNI*
 *_DNI*
 
-# The article itself: third-party PDF, fetch it from arXiv
+# Third-party paper: fetch it from the official NBER page
 paper/*.pdf
+
+# Course PDFs stay available locally but are not republished in the public repo
+course/materials/*.pdf
