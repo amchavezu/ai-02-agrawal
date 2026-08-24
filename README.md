@@ -106,6 +106,8 @@ The command prints the results and regenerates `output/variance_summary.txt`,
 `analysis/variance_derivation.md`; `hand/DERIVATION_GUIDE.md` gives a two-page sequence for
 the student's own handwritten verification.
 
+![Variance paths for the independent counterexample and correlated extensions](output/variance_curve.svg)
+
 ## Submission checklist
 
 - [x] Check every mathematical claim against the paper and its appendix.
