@@ -108,10 +108,11 @@ the student's own handwritten verification.
 
 ## Submission checklist
 
-- [ ] Replace every `TODO` after checking the paper directly.
+- [x] Check every mathematical claim against the paper and its appendix.
 - [ ] Add at least one genuine handwritten derivation to `hand/`.
-- [ ] Record the relevant AI conversation in `prompts.md` without polishing it.
+- [x] Record the relevant AI conversation in `prompts.md` without polishing it.
 - [x] Compile `presentation.tex` and visually inspect `presentation.pdf`.
-- [ ] Commit small changes on `analysis`, push the branch, open a PR, and merge it.
+- [x] Commit the work in small changes on `analysis`.
+- [ ] Push `analysis`, open a PR, and merge it into `main`.
 - [ ] Confirm `main` contains the final files.
 - [ ] Comment only the repository URL on the course issue before Tuesday 22:00.

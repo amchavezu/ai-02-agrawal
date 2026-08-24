@@ -17,6 +17,10 @@
 .DS_Store
 Thumbs.db
 
+# Python caches
+__pycache__/
+*.py[cod]
+
 # Never commit personal documents to a public teaching repository
 DNI*
 *_DNI*

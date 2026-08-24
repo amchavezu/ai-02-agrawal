@@ -4,6 +4,7 @@
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
+\usepackage{graphicx}
 \usepackage{xcolor}
 \usetheme{default}
 \usecolortheme{seahorse}
@@ -68,37 +69,58 @@
 
 \begin{frame}{3 \textperiodcentered{} What I did}
   \begin{itemize}
-    \item Mapped the paper's three human inputs: implementation skill, payoff
-      judgment, and opportunity judgment.
-    \item Reconstructed the per-opportunity optimisation problem and its FOC.
-    \item Separated Proposition 1 (effort and output), Proposition 2
-      (adoption drivers), and Proposition 3 (conditional U-shaped variance).
-    \item Identified the variance claim as the priority audit: the U-shape is
-      conditional and concerns the variance of continuation value $V(\theta)$.
+    \item Rewrote continuation value as $V(\theta)=H+\theta Z$, where
+      $H=(\Delta^2/4)\Gamma\alpha^2s$ and $Z=\Gamma/s$.
+    \item Derived
+      $\operatorname{Var}(V)=\operatorname{Var}(H)
+      +2\theta\operatorname{Cov}(H,Z)+\theta^2\operatorname{Var}(Z)$.
+    \item Relaxed $\Gamma\perp s$: initial equalisation now requires
+      $\mathbb E[\Gamma^2]<\mathbb E[\Gamma s]\mathbb E[\Gamma/s]$.
+    \item Wrote a standard-library Python check with three distributions and
+      reproducible CSV, text, and SVG outputs.
   \end{itemize}
 
   \medskip
-  \textcolor{red}{TODO before submission:} add the student's own calculation,
-  numerical check, and final verdict.
+  \textbf{Counterexample output:} condition (30) holds, but
+  $\theta^*=1.792$ and
+  $\left.d\operatorname{Var}(V)/d\theta\right|_{\theta=1}=-0.0727$.
 \end{frame}
 
 \begin{frame}{4 \textperiodcentered{} Where I did not believe the AI}
-  \textbf{Claim to audit.} ``Wage variance is U-shaped in AI quality.''
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.64\textwidth}
+      \textbf{Loose claim.} ``Variance is U-shaped in AI quality.''
 
-  \medskip
-  \textbf{Why the loose claim is insufficient.}
-  Proposition 3 requires the paper's functional form, independence assumptions,
-  positive support, and inequality
-  \[
-    \frac{\mathbb{E}[\Gamma^2]}{\mathbb{E}[\Gamma]^2}
-    < \mu_s\,\mathbb{E}\!\left[\frac{1}{s}\right].
-  \]
-  It concerns $\operatorname{Var}(V(\theta))$, not every possible variance object.
+      \medskip
+      \textbf{Audit.} The object is $\operatorname{Var}(V(\theta))$.
+      Condition (30) makes the initial slope negative and implies
+      $\theta^*>0$, but a positive slope at $\theta=1$ also requires
+      \[
+        \boxed{\theta^*<1}.
+      \]
+      The paper's Appendix A.3 proves a positive slope of the derivative, not
+      that its zero occurs before one.
 
-  \medskip
-  \textbf{Verdict:}
-  \textcolor{red}{TODO - write the student's verdict only after reproducing one
-  step by hand and attaching its photo from \texttt{hand/}.}
+      \medskip
+      \textbf{Verdict.} The AI's unconditional statement is incorrect, and the
+      paper's displayed endpoint claim is under-conditioned.
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \centering
+      \IfFileExists{hand/variance-page-1.jpg}{%
+        \includegraphics[width=\linewidth,height=0.60\textheight,keepaspectratio]
+          {hand/variance-page-1.jpg}
+
+        \scriptsize My handwritten covariance check.
+      }{%
+        \fbox{\parbox[c][0.50\textheight][c]{0.90\linewidth}{\centering
+          Add the genuine notebook photo as\\[4pt]
+          \texttt{hand/}\\
+          \texttt{variance-page-1.jpg}\\[8pt]
+          Guide already included in \texttt{hand/}.}}
+      }
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}

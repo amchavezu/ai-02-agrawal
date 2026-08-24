@@ -1,7 +1,20 @@
 $ErrorActionPreference = 'SilentlyContinue'
 
 $repoRoot = Split-Path -Parent $PSScriptRoot
-$requiredFiles = @('README.md', 'prompts.md', 'presentation.tex', 'AGENTS.md', 'hand\README.md')
+$requiredFiles = @(
+    'README.md',
+    'prompts.md',
+    'presentation.tex',
+    'presentation.pdf',
+    'AGENTS.md',
+    'analysis\variance_derivation.md',
+    'code\variance_extension.py',
+    'output\variance_summary.txt',
+    'output\variance_results.csv',
+    'output\variance_curve.svg',
+    'hand\README.md',
+    'hand\DERIVATION_GUIDE.md'
+)
 
 Write-Host 'Tool readiness'
 $tools = @('git', 'gh', 'code', 'node', 'npm', 'codex', 'tectonic')
@@ -26,7 +39,7 @@ foreach ($relativePath in $requiredFiles) {
 }
 
 $handFiles = @(Get-ChildItem -LiteralPath (Join-Path $repoRoot 'hand') -File |
-    Where-Object { $_.Name -ne 'README.md' })
+    Where-Object { $_.Name -notin @('README.md', 'DERIVATION_GUIDE.md') })
 if ($handFiles.Count -gt 0) {
     Write-Host ('[OK] handwritten evidence: {0} file(s)' -f $handFiles.Count)
 } else {
