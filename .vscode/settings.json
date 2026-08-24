@@ -1,6 +1,6 @@
 {
   "terminal.integrated.env.windows": {
-    "PATH": "C:\\Program Files\\nodejs;C:\\Users\\marce\\Documents\\GitHub\\.codex-cli;C:\\Users\\marce\\Documents\\GitHub\\.tools\\tectonic;${env:PATH}"
+    "PATH": "C:\\Program Files\\nodejs;C:\\Users\\marce\\Documents\\GitHub\\.codex-cli;C:\\Users\\marce\\Documents\\GitHub\\.tools\\tectonic;C:\\Users\\marce\\Documents\\GitHub\\.tools\\gh\\bin;${env:PATH}"
   },
   "latex-workshop.latex.tools": [
     {

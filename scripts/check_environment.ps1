@@ -4,7 +4,7 @@ $repoRoot = Split-Path -Parent $PSScriptRoot
 $requiredFiles = @('README.md', 'prompts.md', 'presentation.tex', 'AGENTS.md', 'hand\README.md')
 
 Write-Host 'Tool readiness'
-$tools = @('git', 'code', 'node', 'npm', 'codex', 'tectonic')
+$tools = @('git', 'gh', 'code', 'node', 'npm', 'codex', 'tectonic')
 foreach ($tool in $tools) {
     $command = Get-Command $tool -ErrorAction SilentlyContinue
     if ($command) {
@@ -44,4 +44,3 @@ try {
 } finally {
     Pop-Location
 }
-
