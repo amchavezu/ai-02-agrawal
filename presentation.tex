@@ -4,111 +4,239 @@
 \usepackage[english]{babel}
 \usepackage{amsmath,amssymb}
 \usepackage{booktabs}
-\usetheme{default}
-\usecolortheme{seahorse}
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\setbeamerfont{frametitle}{size=\large}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{lmodern}
 
-\title{Aouad, Lykouris \& Zhong (2026)}
-\subtitle{\emph{Human-AI Productivity Paradoxes} --- Section 2}
-\author{Alexander Quispe}
-\date{Repository 1 \textperiodcentered{} Week of August 17--22}
+\definecolor{Ink}{HTML}{14213D}
+\definecolor{Teal}{HTML}{167D8D}
+\definecolor{Gold}{HTML}{F2B134}
+\definecolor{Mist}{HTML}{EEF4F6}
+\definecolor{Muted}{HTML}{52616B}
+
+\usetheme{default}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.82\paperwidth,ht=2.6ex,dp=1.2ex,leftskip=0.06\paperwidth]{author in head/foot}%
+      \color{Muted}\scriptsize Agrawal, Gans \& Goldfarb (2025) --- Repository 2
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.18\paperwidth,ht=2.6ex,dp=1.2ex,rightskip=0.06\paperwidth plus1fil]{date in head/foot}%
+      \color{Muted}\scriptsize\insertframenumber/5
+    \end{beamercolorbox}%
+  }%
+}
+\setbeamercolor{normal text}{fg=Ink,bg=white}
+\setbeamercolor{frametitle}{fg=Ink,bg=white}
+\setbeamercolor{structure}{fg=Teal}
+\setbeamercolor{alerted text}{fg=Teal}
+\setbeamercolor{block body}{fg=Ink,bg=Mist}
+\setbeamerfont{frametitle}{series=\bfseries,size=\Large}
+\setbeamerfont{title}{series=\bfseries,size=\fontsize{28}{32}\selectfont}
+\setbeamerfont{subtitle}{size=\large}
+\setbeamersize{text margin left=0.06\paperwidth,text margin right=0.06\paperwidth}
+
+\newcommand{\keybox}[1]{%
+  \begin{beamercolorbox}[rounded=true,sep=0.8ex]{block body}
+    #1
+  \end{beamercolorbox}%
+}
+\newcommand{\HandPageOne}{hand/handwritten-variance-derivation-page-1.jpg}
+\newcommand{\HandPageTwo}{hand/handwritten-variance-derivation-page-2.jpg}
+\newcommand{\HandPageThree}{hand/handwritten-variance-derivation-page-3.jpg}
+\newcommand{\HandPageFour}{hand/handwritten-variance-derivation-page-4.jpg}
+
+\title{The Economics of\\Bicycles for the Mind}
+\subtitle{Agrawal, Gans \& Goldfarb (2025) --- NBER Working Paper 34034}
+\author{amchavezu}
+\date{Artificial Intelligence and Economic Modeling --- Repository 2}
 
 \begin{document}
 
-%================= PORTADA (con el enlace al repositorio) =============
 \begin{frame}[plain]
-  \titlepage
-  \begin{center}\small
-    \texttt{github.com/alexanderquispe/ai-01-aouad}
+  \vspace{0.55cm}
+  {\color{Gold}\rule{1.2cm}{3pt}}\\[0.35cm]
+  {\usebeamerfont{title}\color{Ink}\inserttitle\par}
+  \vspace{0.25cm}
+  {\usebeamerfont{subtitle}\color{Muted}\insertsubtitle\par}
+  \vfill
+  {\large\insertauthor}\par
+  \vspace{0.20cm}
+  {\small\insertdate}\par
+  \vspace{0.35cm}
+  {\small\href{https://github.com/amchavezu/ai-02-agrawal}{%
+    \color{Teal}\texttt{https://github.com/amchavezu/ai-02-agrawal}}}
+  \vspace{0.35cm}
+\end{frame}
+
+\begin{frame}{1. A tool changes implementation, not the objective}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.49\textwidth}
+      {\color{Teal}\textbf{Question}}\\[-1pt]
+      How do cognitive tools change effort, productivity, and the value of human skills?
+
+      \medskip
+      {\color{Teal}\textbf{Single mechanism}}\\[-1pt]
+      The tool directly improves implementation, lowering the marginal return to human
+      implementation effort; judgment still selects payoffs and opportunities.
+
+      \medskip
+      \footnotesize
+      \textbf{Skills:} implementation \(s\), payoff judgment \(\alpha\), and opportunity
+      judgment \(\{\gamma(t)\}\).
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      {\color{Teal}\textbf{Conditional agent problem}}
+      \[
+        \max_{e_t\geq0}\;
+        \underbrace{p(se_t;\theta)\alpha\Delta-c(e_t;\theta)}_{M(e_t;\theta)}.
+      \]
+      The choice variable is effort \(e_t\); the constraint is \(e_t\geq0\).
+
+      \medskip
+      At an interior optimum,
+      \[
+        p'(se_t^*;\theta)s\alpha\Delta=c'(e_t^*;\theta).
+      \]
+      \footnotesize Opportunity judgment changes how often the problem occurs, not this
+      conditional FOC.
+    \end{column}
+  \end{columns}
+  \vfill
+  {\color{Muted}\scriptsize Source: Agrawal, Gans \& Goldfarb (2025), Sections 2--3.}
+\end{frame}
+
+\begin{frame}{2. Proposition 1: more value with less effort}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.48\textwidth}
+      {\color{Teal}\textbf{All conditions used for strict conclusions}}
+      \begin{itemize}\small
+        \item \(p\) increasing and weakly concave; \(c\) increasing and weakly convex.
+        \item \(s>0\), \(\alpha\Delta>0\), and a finite positive opportunity multiplier
+          \(\Gamma\).
+        \item Interior, unique optima; at least one relevant level improvement is strict.
+        \item For every feasible \(e\):
+      \end{itemize}
+      \vspace{-0.35cm}
+      \[
+        p(se;1)\ge p(se;0),\qquad c(e;1)\le c(e;0),
+      \]
+      \vspace{-0.35cm}
+      \[
+        \frac{p'(se;1)}{c'(e;1)}<
+        \frac{p'(se;0)}{c'(e;0)}\quad(e>0).
+      \]
+    \end{column}
+    \begin{column}{0.48\textwidth}
+      {\color{Teal}\textbf{Result}}
+      \[
+        \boxed{e_t^*(1)<e_t^*(0)}
+      \]
+      \[
+        \boxed{e_t^*(\theta)=e^*(\theta)\quad\forall t}
+      \]
+      \[
+        \boxed{V_0(1)>V_0(0)}
+      \]
+      \keybox{\small The tool raises attainable net value but lowers the marginal payoff
+      to direct implementation effort. Conditional choices are time-invariant because the
+      one-opportunity objective is time-invariant.}
+    \end{column}
+  \end{columns}
+  \vfill
+  {\color{Muted}\scriptsize At a corner or without strictness, the safe comparative statics
+  are weak. Source: Proposition 1 and Appendix A.1.}
+\end{frame}
+
+\begin{frame}{3. Dependence, not marginals, governs the variance effect}
+  \vspace{-0.25cm}
+  \[
+    V(\theta)=H+\theta Z,\quad
+    H=\frac{\Delta^2}{4}\Gamma\alpha^2s,\quad Z=\frac{\Gamma}{s},
+  \]
+  \vspace{-0.25cm}
+  \[
+    \operatorname{Var}(V)=\operatorname{Var}(H)
+    +2\theta\operatorname{Cov}(H,Z)+\theta^2\operatorname{Var}(Z),
+  \]
+  \vspace{-0.20cm}
+  \[
+    \left.\frac{d\operatorname{Var}(V)}{d\theta}\right|_0<0
+    \iff
+    \mathbb E[\Gamma^2]<\mathbb E[\Gamma s]\mathbb E[\Gamma/s].
+  \]
+
+  \vspace{-0.10cm}
+  \begin{center}
+  \small
+  \begin{tabular}{lccc}
+    \toprule
+    Scenario & Condition/gap & Slope at \(0\) & \(\theta^*\) or minimum \\
+    \midrule
+    Independent counterexample & (30) holds & \(-0.1646\) & \(1.792\) formal \\
+    Correlated A & \(-0.02762\) & \(-0.3182\) & \(0.1403\) \\
+    Correlated B & \(+0.04616\) & \(+0.5317\) & boundary \(0\) \\
+    \bottomrule
+  \end{tabular}
   \end{center}
+
+  \keybox{\small Our student-chosen, standard-library extension checks 75 grid rows:
+  direct variance equals the quadratic formula; reruns have identical hashes; and
+  correlated A and B share both marginals.}
 \end{frame}
 
-%================= 1. EL ART\'ICULO ====================================
-\begin{frame}{1 \textperiodcentered{} The paper and the agent's problem}
-  \textbf{Question.} When does AI assistance make a worker \emph{less} productive?
+\begin{frame}{4. I did not believe the endpoint claim}
+  \vspace{-0.06cm}
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.54\textwidth}
+      {\color{Teal}\textbf{Loose AI answer:}}\quad
+      \emph{Variance is U-shaped in AI quality.}
 
-  \medskip
-  \textbf{The single mechanism.} AI is a \emph{perfectly substitutable input}:
-  skill, effort and assistance enter production only through their sum.
-  \[ x \;=\; s + e + a \]
+      \smallskip
+      {\color{Teal}\textbf{Audit}}
+      \[
+        \begin{aligned}
+        \operatorname{Var}'(V;\theta)
+          &=2\operatorname{Cov}(H,Z)+2\theta\operatorname{Var}(Z),\\
+        \operatorname{Var}'(V;1)>0
+          &\iff \boxed{\theta^*<1}.
+        \end{aligned}
+      \]
+      Condition (30) proves \(\operatorname{Var}'(V;0)<0\) and \(\theta^*>0\),
+      but not the endpoint inequality.
 
-  \medskip
-  \textbf{The agent's problem.} Choose effort $e$ to maximise output net of a
-  \emph{linear} cost:
-  \[ \max_{e \ge 0}\; p(s+e+a) \;-\; \gamma e \]
+      \smallskip
+      \textbf{Counterexample:} (30) holds, but \(\theta^*=1.792\) and
+      the slope at one is \(-0.0727\).
 
-  \smallskip
-  \begin{itemize}\small
-    \item $p$ weakly increasing, concave, twice differentiable; $\gamma>0$.
-    \item Only constraint: $e \ge 0$ --- and it binds. That is the whole result.
-  \end{itemize}
-\end{frame}
-
-%================= 2. EL RESULTADO ===================================
-\begin{frame}{2 \textperiodcentered{} Proposition 2.1, with all its conditions}
-  Define $x^{*}$ as the \emph{largest} maximiser of $p(x)-\gamma x$:
-  \[ x^{*} \;=\; \max\,\arg\max_{x}\;\bigl[\,p(x)-\gamma x\,\bigr] \]
-
-  \textbf{Regularity condition} (without it $x^{*}$ need not exist):
-  \[ \limsup_{x\to\infty} \frac{p(x)}{x} \;<\; \gamma \]
-
-  \medskip
-  \textbf{Then}
-  \[ e^{*}(s,a) = \bigl(x^{*}-s-a\bigr)_{+}, \qquad
-     p^{*}(s,a) = \max\bigl\{\,p(x^{*}),\; p(s+a)\,\bigr\} \]
-
-  \medskip
-  \footnotesize\emph{Intuition.} The agent has one target level of total input;
-  he tops it up with effort, and once skill plus AI already reach it he simply
-  stops working.
-\end{frame}
-
-%================= 3. LO QUE HICE ====================================
-\begin{frame}{3 \textperiodcentered{} What I did}
-  \textbf{Reproduced} Proposition 2.1 by hand --- the interior-versus-corner
-  split, with no differentiation in the proof (\texttt{hand/}).
-
-  \medskip
-  \textbf{Assumptions I considered relaxing}
-  \begin{itemize}\small
-    \item \textbf{Linear cost $\to$ convex.} \emph{Dead end}: the authors already
-      do it in Appendix D (Props. D.3, D.6). Replication, not extension.
-    \item \textbf{Myopia.} A two-period agent who internalises skill dynamics.
-      Never relaxed anywhere in the paper --- this is the live one.
-    \item \textbf{Complementarity inside $p(\cdot)$} rather than as an added
-      interaction term. Harder: \S{}4.4 and \S{}5.3 partly pre-empt it.
-  \end{itemize}
-
-  \medskip
-  \textbf{Also produced} a full step-by-step tutorial of the paper and two
-  lecture decks (\texttt{extra/}).
-\end{frame}
-
-%================= 4. LA IA =========================================
-\begin{frame}{4 \textperiodcentered{} Where I did not believe the AI}
-  \textbf{What I asked.} ``What is the most natural extension of this model?''
-
-  \medskip
-  \textbf{What the model answered.} Relax the linear cost $c(e)=\gamma e$ to a
-  strictly convex $c(e)$ --- presented confidently as an open direction.
-
-  \medskip
-  \textbf{My verdict: \textcolor{red}{incorrect as an extension}.}
-  \begin{itemize}\small
-    \item Appendix D is titled \emph{``Extension to convex cost functions''} and
-      redoes Sections 2--4 under strictly convex cost.
-    \item So the proposal is already in the paper. I checked the appendix
-      directly rather than taking the answer at face value.
-    \item \emph{Caveat worth keeping:} Appendix D covers \S\S{}2--4 but \textbf{not}
-      \S{}5, so convex cost applied to the skill-polarisation result is genuinely
-      untouched.
-  \end{itemize}
-
-  \medskip
-  \footnotesize The step I re-derived by hand is in \texttt{hand/} --- I did not
-  trust the algebra of the first-order condition until I had written it out.
+      \smallskip
+      \keybox{\small\textbf{Verdict:} the unconditional AI statement is incorrect;
+      the paper's endpoint claim is under-conditioned. The object is
+      \(\operatorname{Var}_i(V_i(\theta))\).}
+    \end{column}
+    \begin{column}{0.42\textwidth}
+      \centering
+      {\color{Teal}\textbf{My handwritten check}}\\[3pt]
+      \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,height=0.255\textheight,keepaspectratio]{\HandPageOne}
+      \end{minipage}\hfill
+      \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,height=0.255\textheight,keepaspectratio]{\HandPageTwo}
+      \end{minipage}\\[3pt]
+      \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[angle=180,origin=c,width=\linewidth,height=0.255\textheight,keepaspectratio]{\HandPageThree}
+      \end{minipage}\hfill
+      \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth,height=0.255\textheight,keepaspectratio]{\HandPageFour}
+      \end{minipage}\\[2pt]
+      {\scriptsize Pages 1--4: covariance, endpoint, counterexample, and corner.}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \end{document}

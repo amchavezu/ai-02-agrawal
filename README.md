@@ -1,103 +1,69 @@
-# Repository 1 — Aouad, Lykouris & Zhong (2026)
+# Repository 2 - Agrawal, Gans & Goldfarb (2025)
 
-*Human-AI Productivity Paradoxes: Modeling the Interplay of Skill, Effort, and AI Assistance*
-[arXiv:2605.11350](https://arxiv.org/abs/2605.11350) · [cs.GT]
+[*The Economics of Bicycles for the Mind*](https://www.nber.org/papers/w34034),
+NBER Working Paper 34034 (unrefereed). Repository:
+[github.com/amchavezu/ai-02-agrawal](https://github.com/amchavezu/ai-02-agrawal).
 
-> **This is the worked example** for *Artificial Intelligence and Economic
-> Modeling* (UP 2026-II). It shows what a weekly repository looks like when it is
-> done well. Yours does not have to be this long — see "What is required" below.
+## Question and mechanism
 
----
+The paper asks how cognitive tools such as computers and AI change effort, productivity,
+and the value of human skills. Its single mechanism is that a tool improves implementation
+directly, reducing the marginal return to human implementation effort, while judgment still
+determines which actions are valuable and when opportunities arise. The tool therefore
+substitutes for **implementation skill** and can complement **payoff judgment** and
+**opportunity judgment**.
 
-## What question the paper answers
+## Agent problem
 
-When does AI assistance make a worker **less** productive?
+Conditional on noticing an opportunity in round \(t\), the agent chooses effort
+\(e_t\geq0\) to maximize net expected value:
 
-The paper picks one mechanism and pushes it: AI is a **perfectly substitutable
-input**. Skill $s$, effort $e$ and assistance $a$ enter production only through
-their sum, $x = s + e + a$. Nothing else is going on — no learning, no
-complementarity, no contracting. Everything that follows comes from that single
-modelling choice plus a linear cost of effort.
+\[
+e_t^*(\theta)\in\arg\max_{e_t\geq0}
+\left\{M(e_t;\theta)\equiv
+p(se_t;\theta)\alpha\Delta-c(e_t;\theta)\right\}.
+\]
 
-## The agent's problem
+Here \(s>0\) is implementation skill, \(\alpha\Delta>0\) scales the payoff from a
+successful action, and \(\theta\) is tool quality. Opportunity judgment is the sequence
+\(\{\gamma(t)\}\), which controls how often the problem is reached. At an interior optimum,
 
-$$\max_{e \ge 0}\; p(s+e+a) - \gamma e$$
+\[
+p'(se_t^*;\theta)s\alpha\Delta=c'(e_t^*;\theta).
+\]
 
-with $p$ weakly increasing, concave and twice differentiable, $\gamma > 0$, and
-one constraint that turns out to carry the whole result: $e \ge 0$.
+## Main result: Proposition 1
 
-## The main result, with all its conditions
+Assume \(p\) is increasing and weakly concave in implementation, \(c\) is increasing and
+weakly convex in effort, \(s>0\), \(\alpha\Delta>0\), and the opportunity sequence and
+discount factor produce a finite positive multiplier \(\Gamma\). A cognitive tool moving
+from \(\theta=0\) to \(1\) satisfies, for every feasible \(e\),
 
-Let $x^{*}$ be the **largest** maximiser of $p(x) - \gamma x$:
+\[
+p(se;1)\geq p(se;0),\qquad c(e;1)\leq c(e;0),\qquad
+\frac{p'(se;1)}{c'(e;1)}<\frac{p'(se;0)}{c'(e;0)}\quad(e>0).
+\]
 
-$$x^{*} = \max \arg\max_{x} \left[\, p(x) - \gamma x \,\right]$$
+With interior, unique optima and a strict relevant improvement for the strict value claim,
+the paper's result is
 
-This requires a **regularity condition**, without which $x^{*}$ need not exist:
+\[
+e_t^*(1)<e_t^*(0),\qquad e_t^*(\theta)=e^*(\theta)\ \forall t,\qquad
+V_0(1)>V_0(0).
+\]
 
-$$\limsup_{x \to \infty} \frac{p(x)}{x} < \gamma$$
+Thus the agent creates more continuation value with less direct implementation effort.
+Without interiority or strictness, the corresponding safe conclusions are weak.
 
-**Proposition 2.1.** Under those conditions,
+## Extension and handwritten check
 
-$$e^{*}(s,a) = \left(x^{*} - s - a\right)_{+}, \qquad
-  p^{*}(s,a) = \max\left\{ p(x^{*}),\, p(s+a) \right\}$$
+Our student-chosen extension keeps \(\alpha\perp(\Gamma,s)\) but allows
+\(\Gamma\) and \(s\) to be dependent. Initial variance falls exactly when
+\(\mathbb E[\Gamma^2]<\mathbb E[\Gamma s]\mathbb E[\Gamma/s]\); two joint
+distributions with identical marginals produce opposite signs. The standard-library script
+**code/variance_extension.py** verifies 75 grid points and reproduces the paper's endpoint
+counterexample: condition (30) holds, but \(\theta^*=1.792>1\).
 
-*Intuition in one sentence:* the agent has a single target level of total input,
-tops it up with effort, and once skill plus AI already reach it he stops working.
-
-Two things worth noticing about the proof. It is a **case split** — interior
-versus corner — and contains **no differentiation at all**; and the largest-argmax
-tie-break is not decoration, it is what makes $e^{*}$ well defined when
-$p(x)-\gamma x$ has a flat maximum.
-
-## Sections 3–5: stated, not derived
-
-The three headline results — the deskilling paradox, the unreliability paradox
-and skill polarisation — use machinery well beyond Section 2: a continuous-time
-birth–death Markov chain and its steady state, Arrow–Pratt risk aversion applied
-to a *production* function with IARA/DARA driving the sign, and Bayesian updating
-over a binary signal. They are worth understanding; they are not worth trying to
-reproduce in a week. See `extra/tutorial-alz-completo.pdf` for the full walk.
-
----
-
-## What is in this repository
-
-| File | What it is |
-|---|---|
-| `README.md` | This page |
-| `prompts.md` | The full LLM conversation, unedited |
-| `extensions.md` | Which assumptions could be relaxed, and which are dead ends |
-| `hand/` | The derivation of Proposition 2.1, written out by hand |
-| `presentation.tex` / `.pdf` | The 5-minute Beamer deck |
-| `paper/` | The article itself |
-| `extra/` | Above the floor: a full tutorial of the paper and two lecture decks |
-
-## What is required
-
-Only four things. The rest of this repository is above the floor.
-
-1. **`README.md`** — one page: the question, the agent's problem, the main result
-   **with all its conditions**.
-2. **`prompts.md`** — your prompts and the answers, **raw**. Do not tidy them up:
-   the value is in seeing where the model went wrong.
-3. **`hand/`** — at least one photograph of something you derived by hand. Not the
-   whole paper: the one step you did not believe until you did it yourself.
-4. **`presentation.tex` / `.pdf`** — the 5-minute deck, source and compiled.
-
-Deadline is **Tuesday 22:00**, work merged into `main` through a pull request,
-and the repository URL posted as a comment on that week's issue.
-
-## About `hand/`
-
-`hand/prop-2-1-derivacion-a-mano.pdf` is three phone photos of a notebook page.
-That is exactly the standard: crooked, with crossings-out, no transcription. What
-it shows is the first-order condition and the interior-versus-corner split written
-out step by step — the part I did not want to take on trust.
-
-## About the LLM conversation
-
-`prompts.md` is the export of the session that produced the tutorial in `extra/`.
-Read it for what it gets wrong as much as for what it gets right. The episode
-worth studying is on slide 4 of the presentation: asked for "the most natural
-extension", the model confidently proposed relaxing the linear cost — which the
-authors had already done in Appendix D. It took opening the appendix to find out.
+**Handwritten evidence:** the four genuine pages in **hand/** verify the mean and variance
+decomposition, condition (30), the missing endpoint condition \(\theta^*<1\), the exact
+counterexample, and the piecewise solution when effort reaches \(e^*=0\).
