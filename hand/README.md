@@ -1,14 +1,19 @@
-# Hand verification required
+# Handwritten verification
 
-Add at least one genuine photo or scan of a derivation completed by the student.
+The course requires at least one genuine photo of a derivation completed by the student.
+This directory contains four genuine photographed pages of the student's derivation:
 
-Good candidates for this paper:
+    hand/handwritten-variance-derivation-page-1.jpg
+    hand/handwritten-variance-derivation-page-2.jpg
+    hand/handwritten-variance-derivation-page-3.jpg
+    hand/handwritten-variance-derivation-page-4.jpg
 
-- the first-order condition used in Proposition 1 or 2;
-- the envelope-theorem step in Proposition 2;
-- the geometric sum for the continuation value;
-- one step of the variance algebra in Proposition 3.
+The unchanged combined scan is retained as:
 
-After adding the image, update the repository `README.md` and slide 4 of
-`presentation.tex` to identify exactly what was checked and give a justified verdict.
+    hand/handwritten-variance-derivation-combined.pdf
 
+Visual review confirms that the pages follow **DERIVATION_GUIDE.md**: they define \(H\) and
+\(Z\), derive the mean and quadratic variance, calculate the covariance and derivatives,
+separate condition (30) from the endpoint condition \(\theta^*<1\), reproduce the exact
+counterexample, and treat the corner \(e^*=0\). Page 3 is stored upside down in the original
+scan; `presentation.tex` rotates it only at display time and does not alter the image file.
